@@ -1,0 +1,115 @@
+body{
+
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./weather.jpg');
+      
+    font-family: sans-serif;
+}
+*{
+    padding: 0;
+    margin: 0;
+    
+}
+main{
+    width: 300px;
+    height: max-content;
+    min-height: 300px;
+    background-color: #72e7fc;
+    border-radius: 30px;
+    box-shadow: 0 30px 50px rgba(19, 194, 98, 0.2);
+    padding: 30px;
+    box-sizing: border-box;
+}
+main form{
+    border: 1px solid rgba(148, 11, 11, 0.133);
+    display: flex;
+    border-radius: 30px;
+    justify-content: space-between;
+}
+main form input, 
+main form button{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    padding: 10px;
+    box-sizing: border-box;
+}
+main form i{
+    opacity: 0.7;
+}
+main .result{
+    padding-top: 20px;
+    text-align: center;
+}
+main .result .name{
+    font-weight: bold;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+main .temperature img{
+    width: 150px;
+    filter: drop-shadow(0 10px 50px #696666);
+}
+main .temperature figcaption{
+    font-size: 3em;
+}
+main .description{
+    padding: 10px 0 30px;
+}
+main ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+main li{
+    background-color: #e6540b;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px 10px;
+    background-image: linear-gradient(
+        to bottom,
+        transparent 50%,
+        #0003 50%
+    );
+    font-weight: bold;
+    font-size: small;
+}
+main ul li i{
+    font-size: 2em;
+    margin: 20px 0;
+    display: block!important;
+}
+main li:nth-child(2){
+    background-color: #5e55da;
+}
+main li:nth-child(3){
+    background-color: #00bdec;
+}
+main.error{
+    animation: errorEffect 0.3s linear 1;
+}
+@keyframes errorEffect{
+    0%{
+        transform: translate(10px, 5px)
+    }
+    25%{
+        transform: translate(-5px, 0)
+    }
+    50%{
+        transform: translate(8px, 2px)
+    }
+    75%{
+        transform: translate(-2px, 5px)
+    }
+    100%{
+        transform: translate(0, 0); 
+    }
+}
