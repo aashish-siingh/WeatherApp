@@ -1,26 +1,28 @@
-# Weather App
+# Atmos — Weather Dashboard ☀️
 
-A browser-based weather application built with front-end web technologies.
+A redesigned, responsive weather application built using **HTML, CSS, and vanilla JavaScript**.
 
-## Overview
+## Features
+- Current conditions with local time, feels-like temperature, high/low and rain chance
+- Scrollable next-24-hours outlook with precipitation probabilities
+- 7-day forecast with high/low temperatures
+- Humidity, wind speed/direction, UV index, cloud cover, precipitation and pressure
+- Sunrise, sunset and daylight duration
+- Search cities worldwide, or (with browser permission) use your location
+- Toggle between Celsius and Fahrenheit (wind speeds also convert)
+- Remembers the last searched location locally
+- Accessible search, status/error messages, keyboard focus styles and mobile-friendly layout
 
-This repository contains a weather website and related assets. It demonstrates page structure, styling, client-side interactions, and working with weather information in the browser.
+## Data
+Uses [Open-Meteo Forecast API](https://open-meteo.com/en/docs) and [Geocoding API](https://open-meteo.com/en/docs/geocoding-api). **No API key required for non-commercial use under the provider's terms.** Internet access is required; forecasts are model estimates and not emergency weather alerts. The UV figure shows the current matching hourly forecast; if missing, it displays an unavailable value.
 
-## Explore the project
+## Run
+Open `index.html` in a browser with internet access. Geolocation generally requires HTTPS or localhost. The legacy `WeatherForecast/index.html` URL also loads the redesigned dashboard.
 
-- [Main application](index.html)
-- [Additional WeatherForecast files](WeatherForecast/)
+## Technical notes
+- No build tooling or dependencies are required beyond optional hosted web fonts.
+- All weather data is requested client-side; no API keys or other secrets are committed.
+- HTML/CSS/JS assets live under `WeatherForecast/` and the root entry point is `index.html`.
+- If hosting with GitHub Pages, select the branch you want to publish in repository Settings → Pages.
 
-## Run locally
-
-Open `index.html` in your browser. If any weather API requests depend on remote access, you will need an internet connection and valid service configuration.
-
-## Portfolio talking points
-
-- HTML, CSS, and JavaScript
-- Browser UI and user interactions
-- Responsive web project structure
-
-**Next improvements:** document the exact weather-data provider, add a screenshot and deployment link after verifying it, explain error/loading states, and avoid hard-coding API secrets in public files.
-
-[More work](https://github.com/aashish-siingh/myportfolio)
+[More projects](https://github.com/aashish-siingh/myportfolio)

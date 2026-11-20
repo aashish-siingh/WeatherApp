@@ -1,55 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="index.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a1022">
+<meta name="description" content="Atmos — beautiful, detailed weather forecasts for anywhere in the world.">
+<title>Atmos — Your weather, beautifully clear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<script src="index.js" defer></script>
 </head>
 <body>
-    <main>
-        <form>
-            <input type="text" id="name" autocomplete="off">
-            <button>
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </form>
-        <section class="result">
-
-            <figure class="name">
-                <figcaption>Kathmandu</figcaption> 
-                <img src="https://flagsapi.com/GB/shiny/32.png">
-            </figure>
-
-            <figure class="temperature">
-                <img src="https://openweathermap.org/img/wn/10d@4x.png">
-                <figcaption>
-                    <span>31</span>
-                    <sup>o</sup>
-                </figcaption> 
-            </figure>
-            <p class="description">overcast clouds</p>
-            <ul>
-                <li>
-                    <span>clouds</span>
-                    <i class="fa-solid fa-cloud"></i>
-                    <span id="clouds">98</span>%
-                </li>
-                <li>
-                    <span>humidity</span>
-                    <i class="fa-solid fa-droplet"></i>
-                    <span id="humidity">98</span>%
-                </li>
-                <li>
-                    <span>pressure</span>
-                    <i class="fa-solid fa-gauge"></i>
-                    <span id="pressure">1011</span>hPa
-                </li>
-            </ul>
-        </section>
-    </main>
-
-    <script src="index.js"></script>
-</body>
-</html>
+<div class="app-shell">
+<header class="topbar">
+<a class="brand" href="../index.html" aria-label="Atmos home"><span class="brand-mark">☀</span><span>atmos<span class="brand-dot">.</span></span></a>
+<div class="top-actions"><span class="live-pill"><span class="live-dot"></span> Live weather</span><button id="unit-toggle" class="unit-toggle" type="button" aria-label="Toggle between Celsius and Fahrenheit">°C <span>/ °F</span></button></div>
+</header>
+<main>
+<section class="welcome"><div><p class="eyebrow">YOUR DAILY WEATHER COMPANION</p><h1>Weather, <em>beautifully clear.</em></h1><p>Everything you need to plan your day, in one place.</p></div></section>
+<section class="search-row" aria-label="Choose a location"><form id="search-form" class="searchbox" role="search"><span class="search-icon" aria-hidden="true">⌕</span><label class="sr-only" for="city-input">Search for a city</label><input id="city-input" placeholder="Search a city... e.g. Kathmandu, London" autocomplete="off" required><button type="submit">Search <span aria-hidden="true">→</span></button></form><button id="location-btn" class="location-btn" type="button" title="Use my location">◎ <span>My location</span></button></section>
+<p id="status" class="status" role="status" aria-live="polite">Loading your forecast…</p>
+<div id="dashboard" class="dashboard" hidden>
+<section class="hero-card" aria-label="Current weather">
+<div class="hero-upper"><div><p class="hero-label">CURRENT WEATHER <span class="hero-separator">·</span> <span id="local-time">--</span></p><h2 id="city-name">--</h2><p id="country-name" class="hero-place">--</p></div><div id="weather-art" class="weather-art" aria-hidden="true">☀️</div></div>
+<div class="hero-main"><div><div class="temperature"><span id="current-temp">--</span><span class="degree">°</span></div><p id="condition" class="condition">--</p><p id="feels-like" class="feels">Feels like --</p></div><div class="hero-right"><span id="high-low">H: -- · L: --</span><span id="precip-chance">Rain chance: --</span></div></div>
+<div class="hero-footer"><span id="weather-tip">Your forecast at a glance.</span><span id="updated-at">Updated --</span></div>
+</section>
+<section class="forecast-panel hourly-panel"><div class="section-heading"><div><p class="eyebrow">LOOKING AHEAD</p><h3>Next 24 hours</h3></div><span class="section-note">Hourly forecast</span></div><div class="hourly-scroll"><div id="hourly-list" class="hourly-list"></div></div></section>
+<section class="details-section"><div class="section-heading"><div><p class="eyebrow">THE DETAILS</p><h3>Today's conditions</h3></div><span class="section-note">Real-time insights</span></div><div class="metrics-grid">
+<article class="metric"><div class="metric-head"><span>💧</span><span>HUMIDITY</span></div><div class="metric-value"><span id="humidity">--</span><small>%</small></div><p id="humidity-note">Relative humidity</p></article>
+<article class="metric"><div class="metric-head"><span>💨</span><span>WIND SPEED</span></div><div class="metric-value"><span id="wind">--</span><small id="wind-unit">km/h</small></div><p id="wind-note">Wind conditions</p></article>
+<article class="metric"><div class="metric-head"><span>☀️</span><span>UV INDEX</span></div><div class="metric-value"><span id="uv">--</span></div><p id="uv-note">UV exposure</p></article>
+<article class="metric"><div class="metric-head"><span>☁️</span><span>CLOUD COVER</span></div><div class="metric-value"><span id="cloud">--</span><small>%</small></div><p id="cloud-note">Sky coverage</p></article>
+<article class="metric"><div class="metric-head"><span>🌧️</span><span>PRECIPITATION</span></div><div class="metric-value"><span id="precip">--</span><small>mm</small></div><p>Currently falling</p></article>
+<article class="metric"><div class="metric-head"><span>🌡️</span><span>PRESSURE</span></div><div class="metric-value"><span id="pressure">--</span><small>hPa</small></div><p>Mean sea-level pressure</p></article>
+</div></section>
+<section class="bottom-grid"><div class="forecast-panel week-panel"><div class="section-heading"><div><p class="eyebrow">THE WEEK AHEAD</p><h3>7-day forecast</h3></div></div><div id="weekly-list" class="weekly-list"></div></div><div class="forecast-panel sun-panel"><div class="section-heading"><div><p class="eyebrow">DAYLIGHT HOURS</p><h3>Sunrise & sunset</h3></div></div><div class="sun-graphic" aria-hidden="true"><span>☀️</span><div class="sun-arc"></div></div><div class="sun-times"><div><small>🌅 SUNRISE</small><strong id="sunrise">--</strong></div><div><small>🌇 SUNSET</small><strong id="sunset">--</strong></div></div><div class="daylight-line"><span>Daylight duration</span><strong id="daylight">--</strong></div><div class="sun-divider"></div><p id="sun-advice" class="sun-advice">Make the most of the daylight.</p></div></section>
+</div>
+</main>
+<footer>Made with ☀️ and a little curiosity <span>·</span> Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> <span>·</span> Location search by <a href="https://open-meteo.com/en/docs/geocoding-api" target="_blank" rel="noopener noreferrer">Open-Meteo Geocoding</a></footer>
+</div>
+</body></html>
